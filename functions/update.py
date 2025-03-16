@@ -1,5 +1,5 @@
 from requests import get
-import functions.info
+import functions.info as info
 def check() -> str:
     try:
         v=get('https://azkbbys.github.io/getversion/bysTools.txt')
@@ -7,7 +7,7 @@ def check() -> str:
         return '无法连接到更新服务器，请检查网络连接'
     else:
         if(v.status_code==200):
-            if(v.text==functions.info.version):
+            if(v.text==info.version):
                 return '已是最新版本'
             else:
                 return '有新版本可用'+v.text
